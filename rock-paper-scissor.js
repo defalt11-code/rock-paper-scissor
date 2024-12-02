@@ -13,6 +13,47 @@ function computerPick() {
   return computerMove;
 }
 
-console.log(computerPick());
 
+function playGame(playerMove) {
+  let computerMove = computerPick();  
+  let result = '';
 
+  if(playerMove === 'rock') {
+
+    if(computerMove === 'rock') {
+      result = 'tie';
+    }else if(computerMove === 'paper') {
+      result = 'you lose';
+    }else if(computerMove === 'scissor') {
+      result = 'you win';
+    }
+
+  }
+
+  if(playerMove === 'paper') {
+
+    if(computerMove === 'rock') {
+      result = 'you win';
+    }else if(computerMove === 'paper') {
+      result = 'tie';
+    }else if(computerMove === 'scissor') {
+      result = 'you win';
+    }
+
+  }
+
+  if(playerMove === 'scissor') {
+
+    if(computerMove === 'rock') {
+      result = 'you lose';
+    }else if(computerMove === 'paper') {
+      result = 'you win';
+    }else if(computerMove === 'scissor') {
+      result = 'tie';
+    }
+
+  }
+
+  console.log(`You pick: ${playerMove} - ${computerMove}: Computer pick\n ${result}`);
+
+}
