@@ -38,7 +38,7 @@ function playGame() {
   if(humanScore > computerScore) {
     return 'Humans wins!'
   }else {
-    return 'Computer wins!'
+    return 'Computer wins!'    
   }
 
   function playRound(humanChoice, computerChoice) {

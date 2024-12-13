@@ -20,6 +20,14 @@ function playGame(playerMove) {
 };
 
 
+function funcOne() {
+  let data = 0;
+
+  function funcTwo() {
+    data++;
+  }
+}
+
 
 
 
