@@ -1,6 +1,9 @@
 /* Odin project rock paper and scissor */
+const roundResult = document.querySelector(".round-result")
 
-const scoreBoard = document.createElement("p");
+const playerScore = document.querySelector(".player-score");
+const computerScore = document.querySelector(".computer-score");
+const draw = document.querySelector(".draw-score");
 
 const computerMove = () => {
   const moves = ["rock", "paper", "scissor"];
@@ -13,7 +16,16 @@ let possibleOutCome = {
   scissor : {rock: "you lose", paper: "you win", scissor: "tie"}
 };
 
-const humanMove = document.querySelector(".moves");
+const humanMove = document.querySelector("#js-moves-container");
+
+/* get the human move base on the target id */
+humanMove.addEventListener("click", (event) => {
+  const button = event.target.closest("button");
+  if(button) {
+    let humanChoice = button.id;
+    playRound(humanChoice);
+  };
+});
 
 let gameRound = 0;
 
@@ -21,12 +33,9 @@ let score = {
     player: 0,
     computer: 0,
     tie: 0
-    };
+};
 
-/* get the human move base on the target id */
-humanMove.addEventListener("click", (event) => {
-  let humanChoice = event.target.id;
-  
+function playRound(humanChoice) {
   const computerChoice = computerMove();
 
   let result = possibleOutCome[humanChoice]?.[computerChoice] || "Invalid move";
@@ -44,29 +53,36 @@ humanMove.addEventListener("click", (event) => {
       break;
   };
 
+  roundResult.textContent = result;
+
+  displayScore();
   console.log(gameRound++);
   console.log(score);
   if(gameRound === 5) {
     showTheWinner(score.player, score.computer, score);
     resetTheScore();
     gameRound = 0;
-  }
-});
+  };
+};
 
 function displayScore() {
-  score
+  playerScore.textContent = score.player;
+  computerScore.textContent = score.computer;
+  draw.textContent = score.tie;
 };
 
 function resetTheScore() {
   score = { player: 0, computer: 0, tie: 0};
 };
 
-function showTheWinner(playerScore, ComputerScore, scoreBoard) {   
+function showTheWinner(playerFinalScore, computerFinalScore, scoreBoard) {   
   const gameResult = document.createElement("p");
 
-  if(playerScore > ComputerScore) {
+  if(playerFinalScore > computerFinalScore) {
     gameResult.textContent = "Player wins!"
-  }else if(playerScore < ComputerScore) {
+    alert("Player wins!")
+  }else if(playerFinalScore < computerFinalScore) {
+    alert("Computer wins!")
     gameResult.textContent = "Computer wins!"
   };
 

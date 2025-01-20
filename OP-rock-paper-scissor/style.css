@@ -68,13 +68,47 @@ body {
   font-size: 35px;
 }
 
-button {
+.moves-container {
+  margin-top: 120px;
+
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid yellow;
+  width:600px;
+}
+
+.container {
+  margin-top: 50px;
+
+  display: flex;
+}
+
+.moves {
   box-shadow: inset 1px 5px 1px rgb(0, 0, 0, 0.4);
   border-radius: 100%;
   width: 150px;
   height: 150px;
-  color: #021a3d;
   cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: blue 2px solid;
+  width: 530px;
+}
+
+.player-pick,
+.computer-pick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pick {
+  color: #ffffff;
 }
  
 #rock {
