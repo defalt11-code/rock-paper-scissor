@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TOP rock paper scissor</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="header">
-    <img class="logo" src="logo.svg" alt="logo">
+    <img class="logo" src="logos/logo.svg" alt="logo">
 
     <div class="score-section-container">
       <div class="score-board player-container">
@@ -25,13 +26,36 @@
       </div>
     </div>
   </div>
+      
+  <div class="container">
+    <div class="player-pick">
+      <span class="pick">You picked</span>
+      <button id="rock" class="rock">
+        <img id="rock" class="rock-img" src="logos/icon-rock.svg" alt="rock">
+      </button>
+    </div>
 
-  <div class="moves">
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissor">scissor</button>
+    <div class="round-result">You lose!</div>
+
+    <div class="computer-pick">
+      <span class="pick">Computer picked</span>
+      <button id="paper" class="paper">
+        <img id="paper" class="paper-img" src="logos/icon-paper.svg" alt="paper">
+      </button>
+    </div>
   </div>
 
+  <div class="moves">
+    <button id="rock" class="rock">
+      <img id="rock" class="rock-img" src="logos/icon-rock.svg" alt="rock">
+    </button>
+    <button id="paper" class="paper">
+      <img id="paper" class="paper-img" src="logos/icon-paper.svg" alt="paper">
+    </button>
+    <button id="scissor" class="scissor">
+      <img id="scissor" class="scissor-img" src="logos/icon-scissors.svg" alt="scissor">
+    </button>
+  </div>
 
   <script src="OP-rock-paper-scissor.js"></script>
   
