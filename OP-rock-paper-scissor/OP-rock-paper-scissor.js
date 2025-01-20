@@ -1,19 +1,10 @@
 /* Odin project rock paper and scissor */
 
-const humanMove = document.querySelector(".moves");
+const scoreBoard = document.createElement("p");
 
-/* get the human move base on the target id */
-humanMove.addEventListener("click", (event) => {
-  let target = event.target;
-  playRound(target.id);
-});
-
-/* get a moves from from 1 to 3 */
 const computerMove = () => {
-  const move = Math.floor(Math.random() * 3);
-  if(move === 1) {return "rock"}
-  else if(move === 2) {return "paper"}
-  else {return "scissor"}
+  const moves = ["rock", "paper", "scissor"];
+  return moves[Math.floor(Math.random() * moves.length)];
 };
 
 let possibleOutCome = {
@@ -22,38 +13,62 @@ let possibleOutCome = {
   scissor : {rock: "you lose", paper: "you win", scissor: "tie"}
 };
 
-function playRound(humanChoice) {
-  const computerChoice = computerMove();
-  let scoreBoard = {
+const humanMove = document.querySelector(".moves");
+
+let gameRound = 0;
+
+let score = {
     player: 0,
     computer: 0,
     tie: 0
-  };
+    };
+
+/* get the human move base on the target id */
+humanMove.addEventListener("click", (event) => {
+  let humanChoice = event.target.id;
+  
+  const computerChoice = computerMove();
 
   let result = possibleOutCome[humanChoice]?.[computerChoice] || "Invalid move";
   console.log(`${humanChoice} - ${computerChoice}\n\n${result}`);
-  
+
   switch(result) {
     case "you win":
-      scoreBoard.player++
+      score.player++
       break;
     case "you lose":
-      scoreBoard.computer++
+      score.computer++
       break;
     case "tie":
-      scoreBoard.tie++
+      score.tie++
       break;
   };
 
-  showTheWinner(scoreBoard.player, scoreBoard.computer, scoreBoard.tie);
+  console.log(gameRound++);
+  console.log(score);
+  if(gameRound === 5) {
+    showTheWinner(score.player, score.computer, score);
+    resetTheScore();
+    gameRound = 0;
+  }
+});
+
+function displayScore() {
+  score
 };
 
-function showTheWinner(playerScore, ComputerScore) {   
+function resetTheScore() {
+  score = { player: 0, computer: 0, tie: 0};
+};
+
+function showTheWinner(playerScore, ComputerScore, scoreBoard) {   
+  const gameResult = document.createElement("p");
+
   if(playerScore > ComputerScore) {
-    console.log("Player wins!");
+    gameResult.textContent = "Player wins!"
   }else if(playerScore < ComputerScore) {
-    console.log("Computer wins!");
-  }else; {
-    console.log("Draw!");
-  }
+    gameResult.textContent = "Computer wins!"
+  };
+
+  console.log(scoreBoard)
 };

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+    *{
+      box-sizing: border-box;
+
+      font-family: "Roboto Condensed";
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #021a3d;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      border: 4px solid rgb(255, 255, 255, 0.4); 
+      border-radius: 15px;
+      width: 600px;
+      height: 120px;
+      margin-bottom: 30px;
+      margin-top: 50px;
+      padding: 15px ;
+    }
+
+    .logo {
+      width: 120px;
+    }
+
+    .score-section-container {
+      display: flex;
+      justify-content: space-between;
+    
+      width: 280px;
+    }
+
+    .score-board, span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      color: #021a3d;
+    } 
+
+    .score-board {
+      border-radius: 4px;
+      border: none;
+      background-color: #ffffff;
+      width: 80px;
+      padding:5px;
+    }
+    
+    .player,
+    .computer,
+    .draw {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .score {
+      font-weight: 700;
+      font-size: 35px;
+    }
+
+    button {
+      box-shadow: inset 1px 5px 1px rgb(0, 0, 0, 0.4);
+      border-radius: 100%;
+      width: 150px;
+      height: 150px;
+      color: #021a3d;
+      cursor: pointer;
+    }
+     
+    #rock {
+      border: 18px solid #ed0937;
+    }
+
+    #paper {
+      border: 18px solid #0667d6;
+    }
+
+    #scissor {
+      border: 18px solid #f5c116;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="header">
+    <img class="logo" src="logo.svg" alt="logo">
+
+    <div class="score-section-container">
+      <div class="score-board player-container">
+        <span class="player">Player</span>
+        <span class="score player-score">0</span>
+      </div>
+      <div class="score-board computer-container">
+        <span class="computer">Computer</span>
+        <span class="score computer-score">0</span>
+      </div>
+      <div class="score-board draw-container">
+        <span class="draw">Draw</span>
+        <span class="score draw-score">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="moves">
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissor">scissor</button>
+  </div>
+  
+
+  <script>
+    /* Odin project rock paper and scissor */
+
+    const scoreBoard = document.createElement("p");
+
+    const computerMove = () => {
+      const moves = ["rock", "paper", "scissor"];
+      return moves[Math.floor(Math.random() * moves.length)];
+    };
+
+    let possibleOutCome = {
+      rock: {rock: "tie", paper: "you lose", scissor: "you win"},
+      paper: {rock: "you win", paper: "tie", scissor: "you lose"},
+      scissor : {rock: "you lose", paper: "you win", scissor: "tie"}
+    };
+    
+    const humanMove = document.querySelector(".moves");
+
+    let gameRound = 0;
+
+    let score = {
+        player: 0,
+        computer: 0,
+        tie: 0
+        };
+
+    /* get the human move base on the target id */
+    humanMove.addEventListener("click", (event) => {
+      let humanChoice = event.target.id;
+      
+      const computerChoice = computerMove();
+   
+      let result = possibleOutCome[humanChoice]?.[computerChoice] || "Invalid move";
+      console.log(`${humanChoice} - ${computerChoice}\n\n${result}`);
+
+      switch(result) {
+        case "you win":
+          score.player++
+          break;
+        case "you lose":
+          score.computer++
+          break;
+        case "tie":
+          score.tie++
+          break;
+      };
+
+      console.log(gameRound++);
+      console.log(score);
+      if(gameRound === 5) {
+        showTheWinner(score.player, score.computer, score);
+        resetTheScore();
+        gameRound = 0;
+      }
+    });
+
+    function displayScore() {
+      score
+    };
+ 
+    function resetTheScore() {
+      score = { player: 0, computer: 0, tie: 0};
+    };
+
+    function showTheWinner(playerScore, ComputerScore, scoreBoard) {   
+      const gameResult = document.createElement("p");
+
+      if(playerScore > ComputerScore) {
+        gameResult.textContent = "Player wins!"
+      }else if(playerScore < ComputerScore) {
+        gameResult.textContent = "Computer wins!"
+      };
+
+      console.log(scoreBoard)
+    };
+  </script>
+
+</body>
+</html>

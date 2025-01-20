@@ -7,11 +7,31 @@
 </head>
 <body>
 
-<div class="moves">
-  <button id="rock">rock</button>
-  <button id="paper">paper</button>
-  <button id="scissor">scissor</button>
-</div>
+  <div class="header">
+    <img class="logo" src="logo.svg" alt="logo">
+
+    <div class="score-section-container">
+      <div class="score-board player-container">
+        <span class="player">Player</span>
+        <span class="score player-score">0</span>
+      </div>
+      <div class="score-board computer-container">
+        <span class="computer">Computer</span>
+        <span class="score computer-score">0</span>
+      </div>
+      <div class="score-board draw-container">
+        <span class="draw">Draw</span>
+        <span class="score draw-score">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="moves">
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissor">scissor</button>
+  </div>
+
 
   <script src="OP-rock-paper-scissor.js"></script>
   
