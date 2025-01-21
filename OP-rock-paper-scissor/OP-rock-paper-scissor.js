@@ -83,7 +83,6 @@ function playRound(humanChoice) {
     showTheWinner(score.player, score.computer, score);
     resetTheScore();
     gameRound = 0;
-
   };
 };
 
@@ -127,6 +126,7 @@ function resetTheScore() {
   roundInfoContainer.removeChild(playerPickContainer);
   roundInfoContainer.removeChild(roundResult);
   roundInfoContainer.removeChild(computerPickContainer);
+  gameRound = 0
   score = { player: 0, computer: 0, tie: 0};
   displayScore()
 };

@@ -11,6 +11,7 @@
 
 body {
   position: relative;
+  height: 100vh;
   background-color: #021a3d;
 
   display: flex;
@@ -155,6 +156,8 @@ body {
 
 #newGame {
   position: absolute;
+  bottom: 20px;
+  left: 20px;
 
   background: none;
   padding: 10px 16px;
