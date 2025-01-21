@@ -10,6 +10,7 @@
 }
 
 body {
+  position: relative;
   background-color: #021a3d;
 
   display: flex;
@@ -73,7 +74,6 @@ body {
 
   display: flex;
   justify-content: space-between;
-  border: 3px solid yellow;
   width:600px;
 }
 
@@ -89,36 +89,77 @@ body {
   width: 150px;
   height: 150px;
   cursor: pointer;
+  background-color: lightgrey;
+  transition: 0.5s ease;
+}
+
+.moves:hover {
+  transform: scale(130%);
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: blue 2px solid;
-  width: 530px;
+  width: 700px;
 }
 
-.player-pick,
-.computer-pick {
+.player-pick-container,
+.computer-pick-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.jsContendersPick {
+  margin-top: 25px;
+
+  box-shadow: inset 1px 5px 1px rgb(0, 0, 0, 0.4);
+  background-size: 40%;
+  border-radius: 100%;
+  cursor: pointer;
+  background-color: lightgrey;
+  transition:  0.3s ease;
+}
+.jsRoundresult {
+  font-size: 40px;
+}
+
 .pick {
+  font-size: 24px;
   color: #ffffff;
 }
  
 #rock {
+  background-image: url(logos/icon-rock.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
   border: 18px solid #ed0937;
 }
 
 #paper {
+  background-image: url(logos/icon-paper.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
   border: 18px solid #0667d6;
 }
 
 #scissor {
+  background-image: url(logos/icon-scissors.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border: 18px solid #0667d6;
   border: 18px solid #f5c116;
+}
+
+#newGame {
+  position: absolute;
+
+  background: none;
+  padding: 10px 16px;
+  border-radius: 9px;
+  border: 2px solid dimgray;
+  cursor: pointer;
+  font-size: 14px;
 }

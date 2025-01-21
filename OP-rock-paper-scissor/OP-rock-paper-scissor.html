@@ -28,34 +28,24 @@
   </div>
       
   <div class="container">
-    <div class="player-pick">
-      <span class="pick">You picked</span>
-      <button id="rock" class="moves">
-        <img class="rock-img" src="logos/icon-rock.svg" alt="rock">
-      </button>
+    <div class="player-pick-container">
+      <span id="player-info" class="pick"></span>
     </div>
 
     <div class="round-result"></div>
 
-    <div class="computer-pick">
-      <span class="pick">Computer picked</span>
-      <button id="paper" class="moves">
-        <img class="paper-img" src="logos/icon-paper.svg" alt="paper">
-      </button>
+    <div class="computer-pick-container">
+      <span id="computer-info" class="pick"></span>
     </div>
   </div>
 
   <div id="js-moves-container" class="moves-container">
-    <button id="rock" class="moves">
-      <img class="rock-img" src="logos/icon-rock.svg" alt="rock">
-    </button>
-    <button id="paper" class="moves">
-      <img class="paper-img" src="logos/icon-paper.svg" alt="paper">
-    </button>
-    <button id="scissor" class="moves">
-      <img class="scissor-img" src="logos/icon-scissors.svg" alt="scissor">
-    </button>
+    <button id="rock" class="moves"></button>
+    <button id="paper" class="moves"></button>
+    <button id="scissor" class="moves"></button>
   </div>
+
+  <button id="newGame">NEW GAME</button>
 
   <script src="OP-rock-paper-scissor.js"></script>
   
