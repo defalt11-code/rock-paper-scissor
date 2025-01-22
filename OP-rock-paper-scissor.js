@@ -89,7 +89,8 @@ function playRound(humanChoice) {
 function updateContendersPick(elements, choices) {
   elements.forEach((element, index) => {
   const choice = choices[index];
-
+  
+  /* This is are for animation */
   element.id = choice;
   element.style.width = "0"; 
   element.style.height = "0";
@@ -99,6 +100,7 @@ function updateContendersPick(elements, choices) {
 
   element.offsetHeight; // This forces a reflow
 
+  /* This is are for animation */
   setTimeout(() => {
   element.style.width = "220px"; 
   element.style.height = "220px"; 
